@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+  &-top {
+    margin-top: 10px;
+    &__logo {
+      display: flex;
+      margin-right: 40px;
+
+      svg {
+        width: 40px;
+      }
+    }
+  }
+}
