@@ -1,13 +1,77 @@
 .movie-row {
   padding: 0 4%;
-  margin-bottom: 48px;
+  margin-bottom: 52px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
 
   &__title {
     font-size: 1.25rem;
     font-weight: 700;
     color: #f1f5f9;
-    margin: 0 0 16px 4px;
+    margin: 0 0 0 4px;
     letter-spacing: 0.2px;
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #94a3b8;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+
+    &:hover:not(:disabled) {
+      background: #ef4444;
+      border-color: #ef4444;
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    &:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+  }
+
+  // Wrapper for the scroll + edge fades
+  &__track {
+    position: relative;
+  }
+
+  &__fade {
+    position: absolute;
+    top: 0;
+    bottom: 10px; // leave scrollbar space
+    width: 60px;
+    pointer-events: none;
+    z-index: 1;
+
+    &--left {
+      left: 0;
+      background: linear-gradient(to right, #0f172a 0%, transparent 100%);
+    }
+
+    &--right {
+      right: 0;
+      background: linear-gradient(to left, #0f172a 0%, transparent 100%);
+    }
   }
 
   &__scroll {
@@ -18,9 +82,9 @@
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 
-    &::-webkit-scrollbar        { height: 3px; }
-    &::-webkit-scrollbar-track  { background: #1e293b; }
-    &::-webkit-scrollbar-thumb  { background: #475569; border-radius: 2px; }
+    // Invisible scrollbar — arrows handle navigation
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
 
     .movie-card,
     .skeleton-card {

@@ -2,53 +2,89 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 40px !important;
-  margin-bottom: 20px;
+  padding: 32px 0 40px;
+
+  .rc-pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .rc-pagination-item,
+  .rc-pagination-prev button,
+  .rc-pagination-next button {
+    min-width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
 
   .rc-pagination-item {
-    background: #1a1a1a;
-    border-color: #333;
-    border-radius: 4px;
-
     a {
-      color: #999;
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 500;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &:hover {
-      border-color: #e50914;
-
-      a {
-        color: #e50914;
-      }
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      a { color: #ef4444; }
     }
 
     &-active {
-      background: #e50914;
-      border-color: #e50914;
-
-      a {
-        color: #fff !important;
-      }
-
-      &:hover a {
-        color: #fff !important;
-      }
+      background: #ef4444;
+      border-color: #ef4444;
+      a { color: #fff !important; }
+      &:hover a { color: #fff !important; }
     }
   }
 
-  .rc-pagination-prev button,
-  .rc-pagination-next button {
-    background: #1a1a1a;
-    border-color: #333;
-    color: #999;
+  .rc-pagination-prev,
+  .rc-pagination-next {
+    button {
+      color: #94a3b8;
+      font-size: 14px;
+      background: #1e293b;
+      border: 1px solid #334155;
 
-    &:hover {
-      border-color: #e50914;
-      color: #e50914;
+      &:hover {
+        border-color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+      }
     }
   }
 
   .rc-pagination-disabled {
     opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .rc-pagination-jump-prev,
+  .rc-pagination-jump-next {
+    button {
+      color: #64748b;
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      letter-spacing: 2px;
+      cursor: pointer;
+
+      &:hover { color: #ef4444; }
+    }
   }
 }
