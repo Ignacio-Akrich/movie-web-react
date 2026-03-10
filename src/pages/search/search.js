@@ -4,7 +4,7 @@ import queryString from "query-string";
 import MovieCatalog from "../../components/MovieCatalog";
 import Footer from "../../components/Footer";
 import { URL_API, API_KEY } from "../../utils/constants";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 import "./search.scss";
 
@@ -12,8 +12,7 @@ import "./search.scss";
 function Search(props) {
   let location = useLocation();
   let navigate = useNavigate();
-  let params = useParams();
-  const [movieList, setMovieList] = useState([]);
+const [movieList, setMovieList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {

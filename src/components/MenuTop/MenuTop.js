@@ -1,11 +1,22 @@
 import React from "react";
 import { Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 
 import './MenuTop.scss';
 
 export default function MenuTop() {
+    const location = useLocation();
+
+    const getSelectedKey = () => {
+        switch (location.pathname) {
+            case '/new-movies': return ['2'];
+            case '/popular-movies': return ['3'];
+            case '/search': return ['4'];
+            default: return ['1'];
+        }
+    };
+
     return (
         <div className="menu">
             <Link to="/" className="menu-top">
@@ -13,10 +24,10 @@ export default function MenuTop() {
                 <Logo />
             </div>
                 </Link>
-            <Menu 
+            <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={['1']}
+                selectedKeys={getSelectedKey()}
                 style={{ lineHeight: '64px' }}
             >
                 <Menu.Item key="1">

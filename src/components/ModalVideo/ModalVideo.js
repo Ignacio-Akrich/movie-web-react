@@ -11,7 +11,7 @@ export default function ModalVideo(props) {
     useEffect(() => {
         switch (videoPlataform) {
             case "YouTube":
-                setUrlVideo(`https://www.youtu.be/${videoKey}`);
+                setUrlVideo(`https://youtu.be/${videoKey}`);
                 break;
             case "Vimeo":
                 setUrlVideo(`https://vimeo.com/${videoKey}`);

@@ -25,7 +25,7 @@ export default function PopularMovies() {
     return (
         <Row>
             <Col span='24' style={{textAlign: 'center', marginTop: 25}}>
-                <h1 style={{fontSize: 35, fontWeight: 'blod'}}>
+                <h1 style={{fontSize: 35, fontWeight: 'bold'}}>
                     Peliculas Populares
                 </h1>
             </Col>
@@ -34,7 +34,7 @@ export default function PopularMovies() {
                     <Col span='24'>
                         <Pagination 
                         currentPage={moviesList.page}
-                        totalItems={moviesList.total_pages}
+                        totalItems={moviesList.total_results}
                         onChangePage={onChangePage}
                         />
                     </Col>
@@ -44,7 +44,7 @@ export default function PopularMovies() {
                     <Col span='24'>
                         <Pagination 
                         currentPage={moviesList.page}
-                        totalItems={moviesList.total_pages}
+                        totalItems={moviesList.total_results}
                         onChangePage={onChangePage}
                         />
                     </Col>
