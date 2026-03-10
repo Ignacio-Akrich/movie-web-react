@@ -1,60 +1,71 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import queryString from "query-string";
 import MovieCatalog from "../../components/MovieCatalog";
 import Footer from "../../components/Footer";
 import { URL_API, API_KEY } from "../../utils/constants";
-import {useLocation, useNavigate} from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import "./search.scss";
 
-
-function Search(props) {
-  let location = useLocation();
-  let navigate = useNavigate();
-const [movieList, setMovieList] = useState([]);
+export default function Search() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [movieList, setMovieList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     (async () => {
-      const searchValue = queryString.parseUrl(location.search);
-      const { s } = searchValue.query;
+      const { query: { s } } = queryString.parseUrl(location.search);
+      const term = s || "trending";
       const response = await fetch(
-        `${URL_API}/search/movie?api_key=${API_KEY}&language=es-ES&query=${typeof s == "undefined" ? "star wars": s}&page=1`
+        `${URL_API}/search/movie?api_key=${API_KEY}&language=es-ES&query=${term}&page=1`
       );
       const movies = await response.json();
-
-      setSearchValue(s);
+      setSearchValue(typeof s === "undefined" ? "" : s);
       setMovieList(movies);
     })();
   }, [location.search]);
 
-  const onChangeSerach = e => {
+  const onChangeSearch = (e) => {
+    const val = e.target.value;
     const urlParams = queryString.parse(location.search);
-    urlParams.s = e.target.value;
+    urlParams.s = val;
     navigate(`?${queryString.stringify(urlParams)}`);
-    setSearchValue(e.target.value);
+    setSearchValue(val);
   };
+
   return (
-    <Row>
-      <Col span={12} offset={6} className="search">
+    <div className="search-page">
+      <div className="search-page__hero">
         <h1>Busca tu película</h1>
-        <Input value={searchValue} onChange={onChangeSerach} />
-      </Col>
-      {movieList.results && (
-        
-        <Col span={24}>
-          <Row>
-            <MovieCatalog movies={movieList}  />
-          </Row>
-        </Col>
+        <div className="search-page__input-wrap">
+          <SearchOutlined className="search-page__icon" />
+          <input
+            className="search-page__input"
+            value={searchValue}
+            onChange={onChangeSearch}
+            placeholder="Título, director, género…"
+            autoFocus
+          />
+        </div>
+        {searchValue && (
+          <p className="search-page__hint">
+            Resultados para <strong>"{searchValue}"</strong>
+          </p>
+        )}
+      </div>
+
+      {movieList.results && movieList.results.length > 0 && (
+        <div className="search-page__results">
+          <MovieCatalog movies={movieList} />
+        </div>
       )}
-      <Col span={24}>
-        <Footer />
-      </Col>
-    </Row>
+
+      {movieList.results && movieList.results.length === 0 && (
+        <p className="search-page__empty">No se encontraron resultados.</p>
+      )}
+
+      <Footer />
+    </div>
   );
-
 }
-
-export default Search;

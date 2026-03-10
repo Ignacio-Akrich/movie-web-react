@@ -1,0 +1,34 @@
+.movie-row {
+  padding: 0 4%;
+  margin-bottom: 48px;
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0 0 16px 4px;
+    letter-spacing: 0.2px;
+  }
+
+  &__scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar        { height: 3px; }
+    &::-webkit-scrollbar-track  { background: #1e293b; }
+    &::-webkit-scrollbar-thumb  { background: #475569; border-radius: 2px; }
+
+    .movie-card,
+    .skeleton-card {
+      width: 150px;
+      min-width: 150px;
+
+      @media (min-width: 600px)  { width: 175px; min-width: 175px; }
+      @media (min-width: 1024px) { width: 195px; min-width: 195px; }
+    }
+  }
+}

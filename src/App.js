@@ -1,40 +1,33 @@
 import React from "react";
-import { Layout } from "antd";
-import { BrowserRouter as Router, Route , Routes} from "react-router-dom";
-import MenuTop from "./components/MenuTop";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { WatchlistProvider } from "./context/WatchlistContext";
+import Navbar from "./components/Navbar/Navbar";
 
-//Pages
-import Home from "./pages/home";
-import NewMovies from "./pages/new-movies";
-import Search from "./pages/search";
-import Movie from "./pages/movie";
-import Error404 from "./pages/error404/error404";
+import Home         from "./pages/home";
+import NewMovies    from "./pages/new-movies";
 import PopularMovies from "./pages/popular-movies";
+import Search       from "./pages/search";
+import Movie        from "./pages/movie";
+import Watchlist    from "./pages/watchlist";
+import Error404     from "./pages/error404/error404";
 
 export default function App() {
-  const { Header, Content, Footer } = Layout;
-
   return (
-    <Layout>
-      <Router>
-        
-        <Header style={{zIndex: 1}}> 
-          <MenuTop />
-        </Header>
-
-        <Content>
-        <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/new-movies" element={<NewMovies />} />
-            <Route exact path="/popular-movies" element={<PopularMovies />} />
-            <Route exact path="/search" element={<Search />} />
-            <Route exact path="/movie/:id" element={<Movie />} />
-            <Route exact path="*" element={<Error404 />} />
+    <Router>
+      <WatchlistProvider>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/"               element={<Home />} />
+            <Route path="/new-movies"     element={<NewMovies />} />
+            <Route path="/popular-movies" element={<PopularMovies />} />
+            <Route path="/search"         element={<Search />} />
+            <Route path="/movie/:id"      element={<Movie />} />
+            <Route path="/watchlist"      element={<Watchlist />} />
+            <Route path="*"              element={<Error404 />} />
           </Routes>
-        </Content>
-      </Router>
-    </Layout>
+        </main>
+      </WatchlistProvider>
+    </Router>
   );
 }
-
-

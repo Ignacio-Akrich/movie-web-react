@@ -1,0 +1,114 @@
+.hero {
+  height: 85vh;
+  min-height: 520px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+
+  &--empty {
+    height: 85vh;
+    background: #0f172a;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top,  #0f172a 0%, rgba(15,23,42,0.65) 45%, transparent 100%),
+      linear-gradient(to right, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.15) 60%, transparent 100%);
+  }
+
+  &__content {
+    position: relative;
+    padding: 0 6% 64px;
+    max-width: 580px;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #94a3b8;
+  }
+
+  &__rating {
+    color: #fbbf24;
+    font-weight: 600;
+  }
+
+  &__title {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #f1f5f9;
+    margin: 0 0 16px;
+    line-height: 1.15;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  &__overview {
+    font-size: 15px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+
+    &--primary {
+      background: #ef4444;
+      color: #fff;
+      &:hover { background: #dc2626; transform: scale(1.03); color: #fff; }
+    }
+
+    &--secondary {
+      background: rgba(241, 245, 249, 0.15);
+      color: #f1f5f9;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(241, 245, 249, 0.25);
+      &:hover { background: rgba(241, 245, 249, 0.25); transform: scale(1.03); color: #f1f5f9; }
+    }
+
+    &--icon {
+      background: rgba(241, 245, 249, 0.15);
+      color: #f1f5f9;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(241, 245, 249, 0.25);
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 50%;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+
+      &.active { background: #ef4444; border-color: #ef4444; }
+      &:hover  { background: rgba(241, 245, 249, 0.28); }
+    }
+  }
+}
