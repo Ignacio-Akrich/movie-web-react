@@ -1,13 +1,16 @@
-.footer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #001529 !important;
-    margin-top: 50px;
-    padding: 20px 0 !important;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a !important;
+  margin-top: 50px;
+  padding: 24px 0 !important;
+  border-top: 1px solid #1e1e1e;
 
-    p{
-        margin: 0;
-        color: white;
-    }
+  p {
+    margin: 0;
+    color: #555;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
 }

@@ -1,14 +1,40 @@
 .menu {
   display: flex;
+  align-items: center;
+
   &-top {
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+
     &__logo {
       display: flex;
       margin-right: 40px;
 
       svg {
-        width: 40px;
+        width: 42px;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.75;
+        }
       }
+    }
+  }
+
+  .ant-menu-item {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    &:hover > a,
+    &-selected > a {
+      color: #e50914 !important;
+    }
+
+    &-selected::after,
+    &:hover::after {
+      border-bottom-color: #e50914 !important;
     }
   }
 }

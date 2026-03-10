@@ -1,34 +1,80 @@
-.movie-list{
-    width: 80%;
-    margin: 0 auto !important;
-    margin-top: 50px !important;
-    border: 1px solid #ccc;
-    border:solid black !important;
+.movie-list {
+  width: 80%;
+  margin: 0 auto !important;
+  margin-top: 50px !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  border: 1px solid #2a2a2a !important;
 
-    .ant-list-header{
-        background-color: black;
+  .ant-list-header {
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
 
-        h2 {
-            text-align: center;
-            margin: 0;
-            color: white;
-        }
+    h2 {
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  .ant-list-items {
+    height: 500px;
+    overflow: auto;
+    background: #161616;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 2px;
+    }
+  }
+
+  .ant-list-item {
+    border-bottom: 1px solid #222 !important;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #1e1e1e;
+    }
+  }
+
+  &__movie {
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .ant-avatar {
+      border-radius: 4px;
+      width: 36px;
+      height: 52px;
     }
 
-    .ant-list-items{
-        height: 500px;
-        overflow: scroll;
+    .ant-list-item-meta-title a {
+      color: #bbb;
+      font-size: 13px;
+
+      &:hover {
+        color: #e50914;
+      }
     }
 
-    &__movie{
-        margin-left: 1rem;
-        margin-right: 1rem;
-        
-        .ant-list-items-meta{
-            align-items: center;
-        }
-        .ant-list-items-meta-title{
-            margin: 0;
-        }
+    .ant-btn {
+      background: transparent;
+      border-color: #333;
+      color: #666;
+
+      &:hover {
+        border-color: #e50914;
+        color: #e50914;
+      }
     }
+  }
 }

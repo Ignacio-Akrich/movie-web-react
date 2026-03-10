@@ -1,14 +1,37 @@
 .error404 {
-    height: calc(100vh - 64px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  
-    h1 {
-      font-size: 60px;
-    }
-    h2 {
-      font-size: 40px;
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+
+  h1 {
+    font-size: 120px;
+    font-weight: 800;
+    color: #e50914;
+    line-height: 1;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 26px;
+    color: #666;
+    font-weight: 300;
+    margin: 0 0 24px;
+  }
+
+  a h3 {
+    color: #ccc;
+    font-size: 15px;
+    border: 1px solid #333;
+    padding: 10px 28px;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+
+    &:hover {
+      border-color: #e50914;
+      color: #e50914;
     }
   }
+}
